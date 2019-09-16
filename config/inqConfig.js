@@ -19,7 +19,16 @@ const config = {
             "View inventory",
             "Purchase an Item"
         ]
-    }
+    },
+    purchase: [
+        {
+            name: "itemID",
+            message: "Please enter the itemID you wish to purchase"
+        }, {
+            name: "qty",
+            message: "How many would you like to purchase?"
+        }
+    ]
 }
 
 module.exports = config;

@@ -8,7 +8,7 @@ const sqlConfig = require("./config/sqlConfig");
 const inqConfig = require("./config/inqConfig");
 
 //internal modules
-const bamizonCustomer = require("./customer/bamizonCustomer");
+const bamizonCustomer = require("./customer/bamizonCustomerCLI");
 
 
 inq.prompt(inqConfig.modeSelect).then((answers) => {
