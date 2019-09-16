@@ -81,7 +81,7 @@ const purchase = () => {
                 }
             })
         } else {
-            console.log(`Please enter a valid order.`.bgRed);
+            console.log(`Please enter a valid order`.bgRed);
             purchase();
         }
     })

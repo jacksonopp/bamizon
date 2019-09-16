@@ -9,7 +9,7 @@ const config = {
         choices: [
             "Customer".yellow,
             "Manager".yellow,
-            "Exit".yellow
+            "Exit".red
         ]
     },
     //mode select for customer screen
@@ -21,7 +21,7 @@ const config = {
         choices: [
             "View inventory".yellow,
             "Purchase an Item".yellow,
-            "Exit".yellow
+            "Exit".red
         ]
     },
     purchase: [
@@ -38,7 +38,11 @@ const config = {
         name: "mode",
         message: "What would you like to do?",
         choices: [
-
+            "View inventory".yellow,
+            "View low inventory".yellow,
+            "Add to inventory".yellow,
+            "Add new product".yellow,
+            "Exit".red
         ]
     }
 }
