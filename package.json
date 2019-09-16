@@ -1,0 +1,25 @@
+{
+  "name": "bamizon",
+  "version": "0.0.1",
+  "description": "a cli product manager",
+  "main": "bamizon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksonopp/bamizon.git"
+  },
+  "author": "jackson oppenheim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacksonopp/bamizon/issues"
+  },
+  "homepage": "https://github.com/jacksonopp/bamizon#readme",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "colors": "^1.3.3",
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  }
+}
