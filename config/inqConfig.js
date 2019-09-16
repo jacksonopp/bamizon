@@ -6,7 +6,8 @@ const config = {
         message: "Are you a customer or manager?",
         choices: [
             "Customer",
-            "Manager"
+            "Manager",
+            "Exit"
         ]
     },
     //mode select for customer screen

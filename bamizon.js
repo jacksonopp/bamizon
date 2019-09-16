@@ -16,5 +16,8 @@ inq.prompt(inqConfig.modeSelect).then((answers) => {
         bamizonCustomer();
     } else if (answers.mode === inqConfig.modeSelect.choices[1]) { //manager
         console.log("manager");
+    } else {
+        console.log("Goodbye!");
+        console.log("Press CTRL + C to quit program".bgRed)
     }
 })

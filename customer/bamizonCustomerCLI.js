@@ -47,8 +47,31 @@ const displayTable = () => {
     })
 };
 
+const querySelect = `SELECT product_name, stock_qty FROM products WHERE item_id=`
+const queryUpdate1 = `UPDATE products SET stock_qty=`
+const querUpdate2 = ` WHERE item_id=`
+
 const purchase = () => {
+    inq.prompt(inqConfig.purchase).then((answers) => {
+        connection.query(`${querySelect}${answers.itemID}`, (err, res, field) => {
+            if (err) throw err;
+            const itemName = res[0].product_name;
+            const stockQty = res[0].stock_qty;
+            const purchaseQty = answers.qty;
+            const newQty = stockQty - purchaseQty;
+            console.log(`${itemName}: ${stockQty} in stock`);
+            console.log(`${purchaseQty} to purchase`);
+            console.log(`new stock: ${newQty}`)
+            updateQty(newQty, answers.itemID);
+        })
+    })
+};
 
+const updateQty = (updatedQty, itemID) => {
+    connection.query(`${queryUpdate1}${updatedQty}${querUpdate2}${itemID}`, (err, res, field) => {
+        if (err) throw err;
+        console.log("Success");
+    });
+    customer();
 }
-
 module.exports = customer;
