@@ -18,6 +18,6 @@ inq.prompt(inqConfig.modeSelect).then((answers) => {
         console.log("manager");
     } else {
         console.log("Goodbye!");
-        console.log("Press CTRL + C to quit program".bgRed)
+        console.log("Press CTRL + C to exit program".bgRed)
     }
 })
