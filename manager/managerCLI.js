@@ -13,10 +13,11 @@ const inqConfig = require("../config/inqConfig");
 const connection = mysql.createConnection(sqlConfig)
 connection.connect();
 
-
+//main function held in exports
 const manager = () => {
     inq.prompt(inqConfig.manager).then((answers) => {
         const mode = answers.mode;
+        //selecting mode
         switch (mode) {
             case inqConfig.manager.choices[0]:
                 viewInventory();
@@ -31,6 +32,10 @@ const manager = () => {
                 newProductInfo();
                 break;
             case inqConfig.manager.choices[4]:
+                removeProduct();
+                break;
+            case inqConfig.manager.choices[5]:
+                connection.end();
                 console.log(`Press CTRL + C to end the program`.bgRed);
                 break;
         }
@@ -93,6 +98,7 @@ const viewLowInventory = () => {
 
 }
 
+//making the query global to make it easier to find
 const querySelect = `SELECT product_name, stock_qty FROM products WHERE item_id=`
 
 const fetchInventory = () => {
@@ -108,6 +114,7 @@ const fetchInventory = () => {
     })
 }
 
+//making the query global to make it easier to find, and breaking it into two
 const queryUpdate1 = `UPDATE products SET stock_qty=`
 const queryUpdate2 = ` WHERE item_id=`
 
@@ -118,12 +125,15 @@ const addToInventory = (newQty, itemID, productName, addQty) => {
         manager();
     })
 }
+
+//function to get the users input for adding products
 const newProductInfo = () => {
     inq.prompt(inqConfig.addNewProduct).then((answers) => {
         if (!validator.isFloat(answers.newPrice) || !validator.isInt(answers.newQty)) {
             console.log("Please enter a valid price or quantity");
             newProductInfo();
         } else {
+            //trigger the function to add products
             addNewProduct(
                 answers.newName,
                 answers.newDept,
@@ -133,17 +143,37 @@ const newProductInfo = () => {
     })
 }
 
+//actually adding the new product
 const addNewProduct = (newName, newDept, newPrice, newQty) => {
-    const newNameStr = newName.toString();
-    const newDeptStr = newDept.toString();
+    // const newNameStr = newName.toString();
+    // const newDeptStr = newDept.toString();
     connection.query(
-        `INSERT INTO products (product_name, department_name, price, stock_qty) VALUES (${newNameStr}, ${newDeptStr}, ${parseFloat(newPrice)}, ${parseInt(newQty)})`,
+        `INSERT INTO products (product_name, department_name, price, stock_qty) VALUES ("${newName}", "${newDept}", ${parseFloat(newPrice)}, ${parseInt(newQty)})`,
         (err, res, field) => {
             if (err) throw err;
             console.log(`Success! You added ${newName} as a new product`);
             manager();
         }
     )
+}
+
+const removeProduct = () => {
+    inq.prompt(inqConfig.removeProduct).then((answers) => {
+        if (answers.confirm) {
+            connection.query(`DELETE FROM products WHERE item_id=${answers.id}`, (err, res, field) => {
+                if (err) throw err;
+                console.log("Success!");
+                manager();
+            })
+        } else {
+            console.log(
+                `
+                ╔═════════════════════════╗
+                ║ ABORTING DELETE PROCESS ║
+                ╚═════════════════════════╝`.bgRed);
+            manager();
+        }
+    })
 }
 
 

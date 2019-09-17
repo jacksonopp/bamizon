@@ -42,6 +42,7 @@ const config = {
             "View low inventory".yellow,
             "Add to inventory".yellow,
             "Add new product".yellow,
+            "Remove Product".yellow,
             "Exit".red
         ]
     },
@@ -70,6 +71,17 @@ const config = {
         {
             name: "newQty",
             message: "Quantity:".green
+        }
+    ],
+    removeProduct: [
+        {
+            name: "id",
+            message: "Product ID to remove:"
+        },
+        {
+            type: "confirm",
+            name: "confirm",
+            message: "Are you sure you want to remove this item? There is no way to undo this".bgRed
         }
     ]
 }
