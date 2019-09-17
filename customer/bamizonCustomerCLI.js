@@ -52,7 +52,7 @@ const displayTable = () => {
 
 const querySelect = `SELECT product_name, stock_qty, price FROM products WHERE item_id=`
 const queryUpdate1 = `UPDATE products SET stock_qty=`
-const querUpdate2 = ` WHERE item_id=`
+const queryUpdate2 = ` WHERE item_id=`
 
 const purchase = () => {
     inq.prompt(inqConfig.purchase).then((answers) => {
@@ -66,7 +66,7 @@ const purchase = () => {
                 const purchaseQty = answers.qty; //purchase qty
 
                 const totalPrice = itemPrice * purchaseQty;
-                const newQty = stockQty - purchaseQty;
+                const newQty = parseInt(stockQty) - parseInt(purchaseQty);
 
 
                 if (newQty >= 0) {
@@ -88,7 +88,7 @@ const purchase = () => {
 };
 
 const updateQty = (updatedQty, itemID) => {
-    connection.query(`${queryUpdate1}${updatedQty}${querUpdate2}${itemID}`, (err, res, field) => {
+    connection.query(`${queryUpdate1}${updatedQty}${queryUpdate2}${itemID}`, (err, res, field) => {
         if (err) throw err;
         // console.log("Success");
     });

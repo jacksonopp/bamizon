@@ -44,7 +44,34 @@ const config = {
             "Add new product".yellow,
             "Exit".red
         ]
-    }
+    },
+    addToInventory: [
+        {
+            name: "itemID",
+            message: "Please enter the itemID you wish to update".green
+        }, {
+            name: "qty",
+            message: "How many would you like to add?".green
+        }
+    ],
+    addNewProduct: [
+        {
+            name: "newName",
+            message: "Product Name:".green
+        },
+        {
+            name: "newDept",
+            message: "Department:".green
+        },
+        {
+            name: "newPrice",
+            message: "Price:".green
+        },
+        {
+            name: "newQty",
+            message: "Quantity:".green
+        }
+    ]
 }
 
 module.exports = config;
