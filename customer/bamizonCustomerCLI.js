@@ -21,6 +21,7 @@ const customer = () => {
             purchase();
         } else {
             connection.end();
+            console.log("Press CTRL+C to end the program".bgRed);
         };
     })
 }
@@ -70,8 +71,10 @@ const purchase = () => {
 
 
                 if (newQty >= 0) {
+                    console.log(`Your total comes out to $${totalPrice}
+                    
+                    `)
                     updateQty(newQty, answers.itemID);
-                    console.log(`Your total comes out to $${totalPrice}`)
                 } else if (stockQty <= 0) {
                     console.log(`Unfortunately we are out of stock of ${itemName}s.`.bgRed);
                     purchase();
