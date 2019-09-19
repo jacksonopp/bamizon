@@ -82,8 +82,8 @@ In our example let's chose manager. You will then be presented with a list of op
 
 ```
 
-The app will then create a sql query that performs the requested action
+The app will then create a sql query that performs the requested action.
 
 ### Demo Video
 
-To see the app in action, [watch it on youtube](#).
+To see the app in action, [watch it on youtube](https://youtu.be/J0FE7Thgezc).
