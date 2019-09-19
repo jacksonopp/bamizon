@@ -43,7 +43,3 @@ values ("PSU", "Power", 120.00, 100);
 
 insert into products(product_name, department_name, price, stock_qty)
 values ("monitor", "externals", 100.00, 100);
-
--- UPDATE products
--- SET stock_qty=99
--- WHERE item_id = 1;

@@ -42,9 +42,48 @@ const config = {
             "View low inventory".yellow,
             "Add to inventory".yellow,
             "Add new product".yellow,
+            "Remove Product".yellow,
             "Exit".red
         ]
-    }
+    },
+    addToInventory: [
+        {
+            name: "itemID",
+            message: "Please enter the itemID you wish to update".green
+        }, {
+            name: "qty",
+            message: "How many would you like to add?".green
+        }
+    ],
+    addNewProduct: [
+        {
+            name: "newName",
+            message: "Product Name:".green
+        },
+        {
+            name: "newDept",
+            message: "Department:".green
+        },
+        {
+            name: "newPrice",
+            message: "Price:".green
+        },
+        {
+            name: "newQty",
+            message: "Quantity:".green
+        }
+    ],
+    removeProduct: [
+        {
+            name: "id",
+            message: "Product ID to remove:"
+        },
+        {
+            type: "confirm",
+            name: "confirm",
+            message: "Are you sure you want to remove this item? There is no way to undo this".bgRed
+        }
+    ]
 }
 
 module.exports = config;
