@@ -51,7 +51,7 @@ project
 In your terminal, navigate to the project's root folder, and type:
 
 ```
-npm add
+npm install
 ```
 
 To run the program, make sure you are still in the project's root folder and type:
