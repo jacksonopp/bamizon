@@ -44,7 +44,6 @@ const manager = () => {
 }
 
 const viewInventory = () => {
-
     //creating an instance of a table
     const table = new Table({
         head: ['ITEM ID', 'PRODUCT NAME', 'DEPARTMENT NAME', 'PRICE', 'QTY IN STOCK']
@@ -70,6 +69,7 @@ const viewInventory = () => {
     })
 
 }
+
 const viewLowInventory = () => {
     //creating an instance of a table
     const table = new Table({
@@ -101,14 +101,17 @@ const viewLowInventory = () => {
 //making the query global to make it easier to find
 const querySelect = `SELECT product_name, stock_qty FROM products WHERE item_id=`
 
+//getting current inventory in stock
 const fetchInventory = () => {
+    //getting user input (qty to add)
     inq.prompt(inqConfig.addToInventory).then((answers) => {
+        //query request to actually get info
         connection.query(`${querySelect}${answers.itemID}`, (err, res, field) => {
             if (err) throw err;
             const productName = res[0].product_name;
             const stockQty = res[0].stock_qty;
             const addQty = answers.qty;
-            const newQty = parseInt(stockQty) + parseInt(addQty);
+            const newQty = parseInt(stockQty) + parseInt(addQty); // new 
             addToInventory(newQty, answers.itemID, productName, addQty);
         });
     })
@@ -158,8 +161,11 @@ const addNewProduct = (newName, newDept, newPrice, newQty) => {
 }
 
 const removeProduct = () => {
+    //gets user input
     inq.prompt(inqConfig.removeProduct).then((answers) => {
+        //confirming if user means to do this
         if (answers.confirm) {
+            // query to delete item
             connection.query(`DELETE FROM products WHERE item_id=${answers.id}`, (err, res, field) => {
                 if (err) throw err;
                 console.log("Success!");

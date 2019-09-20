@@ -1,3 +1,4 @@
+//configs for sql
 const config = {
     host: "localhost",
     port: 8889,
